@@ -1,10 +1,4 @@
 
-/*
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-*/
-
 body {
 	margin: 0;
 	padding: 0;
@@ -77,97 +71,6 @@ a:hover {
 	padding: 0px 0px;
 }
 
-/* Logo */
-
-#logo {
-	float: left;
-	width: 300px;
-	margin: 0;
-	padding: 0;
-	color: #FFFFFF;
-}
-
-#logo h1, #logo p {
-}
-
-#logo h1 {
-	line-height: 120px;
-	letter-spacing: -2px;
-	font-size: 3em;
-}
-
-#logo h1 a {
-	color: #908F8F;
-	text-transform: uppercase;
-}
-
-#logo p {
-	margin: 0;
-	padding: 0px 0 0 0px;
-	letter-spacing: -1px;
-	font: normal 18px Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
-	color: #8E8E8E;
-}
-
-#logo p a {
-	color: #D6D6D6;
-}
-
-#logo a {
-	border: none;
-	background: none;
-	text-decoration: none;
-	color: #12212F;
-}
-
-/* Splash */
-
-#splash {
-	width: 960px;
-	height: 300px;
-	margin: 0px auto;
-}
-
-/* Search */
-
-#search {
-	float: right;
-	width: 280px;
-	height: 60px;
-	padding: 20px 0px 0px 0px;
-}
-
-#search form {
-	height: 41px;
-	margin: 0;
-	padding: 10px 0 0 20px;
-}
-
-#search fieldset {
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
-#search-text {
-	width: 170px;
-	padding: 6px 5px 2px 5px;
-	border: 1px solid #E7EBED;
-	background: #FFFFFF;
-	text-transform: lowercase;
-	font: normal 11px Arial, Helvetica, sans-serif;
-	color: #5D781D;
-}
-
-#search-submit {
-	width: 50px;
-	height: 22px;
-	border: none;
-	background: #B9B9B9;
-	color: #000000;
-}
-
 /* Menu */
 
 #menu {
@@ -211,7 +114,7 @@ a:hover {
 }
 
 #menu .current_page_item a {
-	background: #EE5058;
+	background: #696969;
 	border-radius: 5px;
 }
 
