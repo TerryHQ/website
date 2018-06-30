@@ -60,7 +60,7 @@ a:hover {
 
 #header-wrapper {
 	overflow: hidden;
-	height: 600px;
+	height: 500px;
 }
 
 #header {
@@ -111,11 +111,6 @@ a:hover {
 #menu a:hover, #menu .current_page_item a {
 	text-decoration: none;
 	color: #FFFFFF;
-}
-
-#menu .current_page_item a {
-	background: #696969;
-	border-radius: 5px;
 }
 
 /* Page */
