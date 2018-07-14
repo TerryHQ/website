@@ -97,7 +97,12 @@ body {
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: rgb(34, 34, 34);
-}            
+}
+.topnav a.selected {
+  color: red;
+  background: rgb(34, 34, 34);
+}
+
 footer {
     background-color: rgb(51, 51, 51);;
     position:absolute;
