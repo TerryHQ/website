@@ -54,6 +54,10 @@ basicBox {
 textAlienCenter{
     text-align: center;
 }
+img {
+color: white;
+font: 12px;
+}
 
 body {
     background-color: rgb(33, 33, 33);
