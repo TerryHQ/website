@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+a {
+    color: white;
+}
+
+ /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+.centerVideo {
+    margin: auto;
+    width: 35%;
+    /*border: 3px solid green;*/
+    padding: 10px;
+}
+
+h1 {
+     color: white;
+    font-size: 15px;
+}
+
+h2 {
+     color: white;
+        font-size: 20px;
+}
+h3 {
+     color: white;
+        font-size: 30px;
+}
+p {
+     color: white;
+}
+basicBox {
+    padding: 5px;
+    display: block;
+    background-color: rgb(33, 33, 33);
+} 
+textAlienCenter{
+    text-align: center;
+}
+alienVideoCenter{
+    text-align: center;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    display: block;
+    
+    margin:0;
+    padding:0;
+    height:100%;
+}
+.downloadbutton {
+    font-size: 12px;
+    width: 64px;
+    height: auto;
+    border: 1px solid gray;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.downloadbutton:hover {
+    background-color: rgb(76, 175, 80);
+}
+
+/*Navigation Bar*/
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: rgb(51, 51, 51);
+    overflow: hidden;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: rgb(242, 242, 242);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: rgb(34, 34, 34);
+}            
+footer {
+    background-color: rgb(33, 33, 33);
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+}
