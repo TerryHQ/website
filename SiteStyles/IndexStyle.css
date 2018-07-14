@@ -20,13 +20,6 @@ a {
   display: table;
 } 
 
-.centerVideo {
-    margin: auto;
-    width: 35%;
-    /*border: 3px solid green;*/
-    padding: 10px;
-}
-
 h1 {
      color: white;
     font-size: 15px;
@@ -49,9 +42,6 @@ basicBox {
     background-color: rgb(33, 33, 33);
 } 
 textAlienCenter{
-    text-align: center;
-}
-alienVideoCenter{
     text-align: center;
 }
 
