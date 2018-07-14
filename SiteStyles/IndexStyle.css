@@ -4,6 +4,7 @@
 }
 a {
     color: white;
+    font-family: sans-serif;
 }
 
  /* Three image containers (use 25% for four, and 50% for two, etc) */
@@ -21,20 +22,30 @@ a {
 } 
 
 h1 {
-     color: white;
+    color: white;
     font-size: 15px;
+    font-family: sans-serif;
 }
 
 h2 {
-     color: white;
-        font-size: 20px;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
 }
 h3 {
-     color: white;
-        font-size: 30px;
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
 }
 p {
      color: white;
+     font-size: 12px;
+     font-family: sans-serif;
+}
+li {
+    color: white;
+    font-size: 12px;
+    font-family: sans-serif;
 }
 basicBox {
     padding: 5px;
