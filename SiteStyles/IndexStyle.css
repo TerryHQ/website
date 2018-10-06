@@ -70,7 +70,7 @@ body {
     padding:0;
     height:100%;
 }
-.downloadbutton {
+.button {
     font-size: 12px;
     width: 64px;
     height: auto;
@@ -79,7 +79,7 @@ body {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
-.downloadbutton:hover {
+.button:hover {
     background-color: rgb(76, 175, 80);
 }
 
