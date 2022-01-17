@@ -71,22 +71,24 @@ body {
     height:100%;
 }
 .button {
-    font-size: 14px;
+    font-size: 15px;
     width: 120px;
     height: auto;
-    border: 2px solid rgb(130, 130, 130);
+    border: 2px solid rgb(17, 17, 17);
     text-align: center;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+    background-color: rgb(75, 75, 75);
 }
 .button:hover {
-    background-color: rgb(87, 87, 87);
+    /*background-color: rgb(87, 87, 87);*/
+    border: 2px solid rgb(202, 202, 202);
 }
 
 /*Navigation Bar*/
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(65, 65, 65);
     overflow: hidden;
 }
 /* Style the links inside the navigation bar */
