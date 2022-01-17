@@ -67,7 +67,7 @@ img {vertical-align: middle;}
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 8px;
+  bottom: 255px; /*  bottom: 8px;, changes to make slide show text below slides*/
   width: 100%;
   text-align: center;
 }
@@ -111,7 +111,7 @@ img {vertical-align: middle;}
 </head>
 <body>
 
-<h2>New Content</h2>
+<h2> </h2>
 <div class="slideshow-container">
 
 <div class="mySlides fade">
@@ -123,7 +123,7 @@ img {vertical-align: middle;}
 <div class="mySlides fade">
 <div class="numbertext">2 / 3</div>
   <img src="images/firework_arrow.png" style="width:100%">
-  <div class="text">Firework Arrows</div>
+  <div class="text">Explosive Arrows</div>
 </div>
 
 <div class="mySlides fade">
@@ -163,7 +163,7 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 </script>
 </body>
@@ -174,7 +174,6 @@ function showSlides() {
       <div class="column">
         <basicBox>
             <center>
-                <h2>Media</h2>
                 <iframe src="https://discord.com/widget?id=700132258111160330&theme=dark" width="400" height="350"
                   allowtransparency="true" frameborder="0"
                   sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
