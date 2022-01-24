@@ -19,3 +19,8 @@ function showSlides() {
 	dots[slideIndex - 1].className += " active";
 	setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
+
+$("img", "#gifs-rows").click(function() {
+  $('.preset-file').toggle();
+  $('.gif-file').toggle();
+});
