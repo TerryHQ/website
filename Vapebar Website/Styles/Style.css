@@ -79,7 +79,7 @@ body {
 }
 
 /* mobile viewer */
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1200px) {
 	/* Three image containers (50% for two, 33.33% for 3, use 25% for four, etc) */
 	.column {
 		float: left;
@@ -89,6 +89,8 @@ body {
 	img {
 	width : 60%;
     height: auto; /*to preserve the aspect ratio of the image*/
+	max-height: 450px; /*Change to fix image size for smaller screens*/
+	max-width: 450px;
 	}
   }
 
@@ -120,7 +122,7 @@ body {
 	text-align: center;
 	padding: 5.5px 5.5px;
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 14px;
 }
 /* Change the color of links on hover */
 .topnav a:hover {
