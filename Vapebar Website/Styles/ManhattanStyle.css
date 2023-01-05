@@ -97,7 +97,7 @@ body {
   border: none;
   outline: none;
   padding: 5px 30px;
-  width: 175px;
+  width: 160px;
   height: auto;
   font-size: 18px;
   font-style: italic;
@@ -106,12 +106,10 @@ body {
 	background-color: #222;
 	transform: translateX(2px) translateY(2px);
 }
-
-
 /*Navigation Bar*/
 /* Add a black background color to the top navigation */
 .topnav {
-	background-color: rgb(37, 49, 41);
+	background-color: rgb(66, 52, 70);
 	overflow: hidden;
 }
 /* Style the links inside the navigation bar */
@@ -125,10 +123,10 @@ body {
 }
 /* Change the color of links on hover */
 .topnav a:hover {
-	background-color:rgba(47, 87, 52, 0.562);
+	background-color:rgba(88, 58, 95, 0.788);
 }
 .topnav a.selected {
-	background: rgb(47, 87, 52);
+	background: rgb(112, 72, 122);
 }
 * {
 	box-sizing: border-box;
@@ -139,7 +137,7 @@ body {
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: rgb(37, 49, 41);
+   background-color:rgb(66, 52, 70);
    color: white;
    text-align: center;
 }
