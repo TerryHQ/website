@@ -88,9 +88,9 @@ body {
 	}
 	img {
 	width : 60%;
-    height: auto; /*to preserve the aspect ratio of the image*/
-	max-height: 350px; /*Change to fix image size for smaller screens*/
-	max-width: 350px;
+    height: 60%; /*to preserve the aspect ratio of the image*/
+	max-height: 250px; /*Change to fix image size for smaller screens*/
+	max-width: 250px;
 	}
   }
 
