@@ -125,10 +125,10 @@ body {
 }
 /* Change the color of links on hover */
 .topnav a:hover {
-	background-color:rgba(47, 87, 52, 0.555);
+	background-color:rgba(72, 86, 99, 0.582);
 }
 .topnav a.selected {
-	background: rgb(47, 87, 52);
+	background: rgb(72, 86, 99);
 }
 * {
 	box-sizing: border-box;
