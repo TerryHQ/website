@@ -62,8 +62,8 @@ img.resize {
 	display: none;
 }
 body {
-	/*if cant use url link to image use color #333*/
-	background-image: url("file:///C:/Users/Terry/Documents/GitHub/xTerryManx.github.io/images/news_button.png");
+	/*if cant use url link to image use color #333, file:///C:/Users/Terry/Documents/GitHub/xTerryManx.github.io/images/news_button.png */
+	background-image: url("https://xterrymanx.github.io/images/news_button.png");
 	background-position: center;
 	background-size:cover;
 	width:100%;
