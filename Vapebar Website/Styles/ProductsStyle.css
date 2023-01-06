@@ -4,7 +4,7 @@
 }
 a {
 	color: #f2f2f2;
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 /* Three image containers (50% for two, 33.33% for 3, use 25% for four, etc) */
 .column {
@@ -21,22 +21,22 @@ a {
 h1 {
 	color: #f2f2f2;
 	font-size: 14px;
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 h2 {
 	color: #f2f2f2;
 	font-size: 16px;
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 h3 {
 	color: #f2f2f2;
 	font-size: 18px;
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 p {
 	color: #f2f2f2;
 	font-size: 12px;
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 basicBox {
 	padding: 5px;
