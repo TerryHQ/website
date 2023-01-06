@@ -166,3 +166,55 @@ body {
   .fa:hover {
     opacity: 0.7;
 }
+
+/* Daily Deals Image Blink */
+@-webkit-keyframes blink {
+    0% {
+        opacity: 2;
+    }
+    30% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .75;
+    }
+    100% {
+        opacity: .90;
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        opacity: 2;
+    }
+    30% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .75;
+    }
+    100% {
+        opacity: .90;
+    }
+}
+@-o-keyframes blink {
+    0% {
+        opacity: 2;
+    }
+    30% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .75;
+    }
+    100% {
+        opacity: .90;
+    }
+}
+iblink {
+    -webkit-animation: blink 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation: blink 2s;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: blink 2s;
+    -o-animation-iteration-count: infinite;
+}
