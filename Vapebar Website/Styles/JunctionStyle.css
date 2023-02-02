@@ -201,26 +201,29 @@ body {
 
 /*Image Carrasel*/
 .container {
-	position: left;
-	width: 200px;
+	position: relative;
+	width: 70%;
+	max-width: 180px;
 	margin: 20px auto 0 auto;
 	perspective: 1000px;
   }
   
   .carousel {
 	position: center;
-	width: auto;
+	width: 100%;
 	height: auto;
 	transform-style: preserve-3d; 
 	animation: rotate360 60s infinite forwards linear;
   }
-  .carousel__face { /*image*/
+  
+  .carousel__face {
 	position: absolute;
-	width: 185px;
-	height: 150px;
+	width: calc(100% - 10px);
+	height: auto;
+	padding-top: 75%;
 	top: 10px;
-	left: 5px;
-	right: 5px;
+	left: 0px;
+	right: 0px;
 	background-size: cover;
 	box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.036);
 	display: flex;
