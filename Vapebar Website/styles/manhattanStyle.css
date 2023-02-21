@@ -62,7 +62,7 @@ img.resize {
 	display: none;
 }
 body {
-    background-image: url("../../Vapebar \Website/Images/smoke.png");
+    background-image: url("../../Vapebar \Website/images/smoke.png");
     background-position: center;
     background-size:cover;
     width:100%;
@@ -101,11 +101,11 @@ body {
   }
 
 .button {
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
+  background-color: rgb(70, 70, 70);
+  border-radius: 8px;
   outline: none;
   padding: 5px 30px;
-  width: 160px;
+  width: 150px;
   height: auto;
   font-size: 18px;
   font-style: italic;
@@ -118,7 +118,7 @@ body {
 /*Navigation Bar*/
 /* Add a black background color to the top navigation */
 .topnav {
-	background-color: rgb(66, 52, 70);
+	background-color: rgba(88, 58, 95, 0.788);
 	overflow: hidden;
 }
 /* Style the links inside the navigation bar */
@@ -133,7 +133,7 @@ body {
 }
 /* Change the color of links on hover */
 .topnav a:hover {
-	background-color:rgba(88, 58, 95, 0.788);
+	background-color:rgba(72, 86, 99, 0.582);
 }
 .topnav a.selected {
 	background: rgb(112, 72, 122);
@@ -147,7 +147,7 @@ body {
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color:rgb(66, 52, 70);
+   background-color: rgb(49, 58, 66);
    color: white;
    text-align: center;
 }
@@ -197,3 +197,71 @@ body {
 		opacity: 1;
 	}
 }
+
+/*Image Carrasel*/
+.container {
+	position: relative;
+	width: 70%;
+	max-width: 180px;
+	margin: 20px auto 0 auto;
+	perspective: 1000px;
+  }
+  
+  .carousel {
+	position: center;
+	width: 100%;
+	height: auto;
+	transform-style: preserve-3d; 
+	animation: rotate360 60s infinite forwards linear;
+  }
+  
+  .carousel__face {
+	position: absolute;
+	width: calc(100% - 10px);
+	height: auto;
+	padding-top: 75%;
+	top: 10px;
+	left: 0px;
+	right: 0px;
+	background-size: cover;
+	box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.036);
+	display: flex;
+	backface-visibility: hidden;
+  }
+  
+  .carousel__face:nth-child(1) {
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(0deg) translateZ(260px); }
+  .carousel__face:nth-child(2) { 
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	  transform: rotateY(40deg) translateZ(260px); }
+  .carousel__face:nth-child(3) {
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(80deg) translateZ(260px); }
+  .carousel__face:nth-child(4) {
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(120deg) translateZ(260px); }
+  .carousel__face:nth-child(5) { 
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+   transform: rotateY(160deg) translateZ(260px); }
+  .carousel__face:nth-child(6) { 
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(200deg) translateZ(260px);}
+  .carousel__face:nth-child(7) { 
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+   transform: rotateY(240deg) translateZ(260px); }
+  .carousel__face:nth-child(8) {
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(280deg) translateZ(260px); }
+  .carousel__face:nth-child(9) {
+	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	transform: rotateY(320deg) translateZ(260px); }
+  
+  @keyframes rotate360 {
+	from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(-360deg);
+	}
+  }
