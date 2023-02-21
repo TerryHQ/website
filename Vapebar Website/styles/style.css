@@ -182,6 +182,30 @@ body {
     opacity: 0.7;
 }
 
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 5s;
+	animation-name: fade;
+	animation-duration: 5s;
+}
+@-webkit-keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 /* Daily Deals Image Blink */
 @-webkit-keyframes blink {
     0% {
@@ -233,3 +257,25 @@ iblink {
     -o-animation: blink 2s;
     -o-animation-iteration-count: infinite;
 }
+
+/*Loading, Preload website, then show it*/
+body.has-js::before {
+	content: '';
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+	height: 100vh;
+	width: 100vw;
+	pointer-events: none;
+	transition: all 1s;
+	margin: 0 auto;
+	background: rgba(0, 0, 0) url("../../Vapebar Website/images/gifs/loading.gif") no-repeat center center / 400px;
+  }
+  body.loaded::before {
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }

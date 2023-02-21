@@ -13,7 +13,17 @@
       </div>
    </head>
    <body>
+      <!--Pre Load Page-->
+      <script>
+         // Only show loader if JS is available
+         document.body.className += ' has-js';
+         // Option 1: Hide loader when 'load' event fires
+         window.onload = function() { document.body.className += ' loaded'; }
+         // Option 2: Hide loader after 2 seconds, in case the 'load' event never fires
+         setTimeout(function(){ document.body.className += ' loaded'; }, 1000 * 2);
+       </script>
       <h3></h3>
+      <div class="fade">
       <center><img src="images/logo.png" alt="Loading..." width="20%" height="100" style="min-height: 100px; min-width: 325px;"></center>
       <center>
          <basicBox>
@@ -59,6 +69,7 @@
             </div>
          </basicBox>
       </center>
+   </div>
       <basicBox style="height: 100px;"></basicBox>
       <div class="footer">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
