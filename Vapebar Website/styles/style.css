@@ -101,7 +101,7 @@ body {
 }
 
 /* mobile viewer */
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1400px) {
 	/* Three image containers (50% for two, 33.33% for 3, use 25% for four, etc) */
 	.column {
 		float: left;
