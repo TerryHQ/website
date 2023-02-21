@@ -230,31 +230,31 @@ body {
   }
   
   .carousel__face:nth-child(1) {
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/1.jpg");
 	transform: rotateY(0deg) translateZ(260px); }
   .carousel__face:nth-child(2) { 
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/2.jpg");
 	  transform: rotateY(40deg) translateZ(260px); }
   .carousel__face:nth-child(3) {
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/3.jpg");
 	transform: rotateY(80deg) translateZ(260px); }
   .carousel__face:nth-child(4) {
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/4.jpg");
 	transform: rotateY(120deg) translateZ(260px); }
   .carousel__face:nth-child(5) { 
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/5.jpg");
    transform: rotateY(160deg) translateZ(260px); }
   .carousel__face:nth-child(6) { 
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/6.jpg");
 	transform: rotateY(200deg) translateZ(260px);}
   .carousel__face:nth-child(7) { 
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/7.jpg");
    transform: rotateY(240deg) translateZ(260px); }
   .carousel__face:nth-child(8) {
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/8.jpg");
 	transform: rotateY(280deg) translateZ(260px); }
   .carousel__face:nth-child(9) {
-	background-image: url("../../Vapebar \Website/images/jc_product1.PNG");
+	background-image: url("../../Vapebar \Website/images/mh/9.jpg");
 	transform: rotateY(320deg) translateZ(260px); }
   
   @keyframes rotate360 {
