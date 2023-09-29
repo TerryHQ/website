@@ -73,9 +73,10 @@ body {
   background-color: rgb(75, 75, 75);
   border: none;
   outline: none;
-  padding: 5px 30px;
+  align-self: center;
+  padding: 5px 5px;
   width: 100px;
-  height: auto;
+  
   font-size: 15px;
 }
 .button:hover {
