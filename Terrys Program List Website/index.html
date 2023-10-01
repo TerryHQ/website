@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="styles.css" />
-    </head>
-    <body>
-        <h1>Terry's Program List</h1>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <h1>Terry's Program List</h1>
 
-        <input type="text" id="search-bar" placeholder="Search programs..." />
-        <div id="filter-buttons">
-            <button id="all-filter">All</button>
-            <button id="linux-filter">Linux</button>
-            <button id="windows-filter">Windows</button>
-            <button id="music-filter">Music</button>
-            <button id="art-filter">Art</button>
-            <button id="games-filter">Games</button>
-            <button id="misc-filter">Misc</button>
-        </div>
+    <div class="random-text" id="random-text"></div>
+    <input type="text" id="search-bar" placeholder="Search programs..." />
 
-        <div id="program-list">
-            <!-- Program items will be displayed here -->
-        </div>
+    <div id="filter-buttons">
+      <button class="filter-button" id="all-filter">All</button>
+      <button class="filter-button" id="linux-filter">Linux</button>
+      <button class="filter-button" id="windows-filter">Windows</button>
+      <button class="filter-button" id="music-filter">Music</button>
+      <button class="filter-button" id="art-filter">Art</button>
+      <button class="filter-button" id="games-filter">Games</button>
+      <button class="filter-button" id="misc-filter">Misc</button>
+    </div>
 
-        <script src="script.js"></script>
-    </body>
+    <div id="program-list">
+      <!-- Program items will be displayed here -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -35,21 +35,21 @@ const programs = [
         category: "Misc"
     },
     {
-        name: "gedit",
+        name: "Gedit",
         icon: "images/gedit.jpeg",
         os: "Linux",
         link: "https://wiki.gnome.org/Apps/Gedit",
         category: "Misc"
     },
     {
-        name: "kitty",
+        name: "Kitty",
         icon: "images/kitty.jpeg",
         os: "Linux",
         link: "https://sw.kovidgoyal.net/kitty/",
         category: "Misc"
     },
     {
-        name: "appimage",
+        name: "Appimage",
         icon: "images/appimageupdate.jpeg",
         os: "Linux",
         link: "https://github.com/AppImage/appimaged",
@@ -63,63 +63,63 @@ const programs = [
         category: "Games"
     },
     {
-        name: "bitwarden",
+        name: "Bitwarden",
         icon: "images/bitwarden.svg",
         os: "Linux",
         link: "https://bitwarden.com/",
         category: "Misc"
     },
     {
-        name: "balenaetcher",
+        name: "Balenaetcher",
         icon: "images/balenaetcher.png",
         os: "Linux",
         link: "https://www.balena.io/etcher/",
         category: "Misc"
     },
     {
-        name: "blender",
+        name: "Blender",
         icon: "images/blender.jpeg",
         os: "Linux",
         link: "https://www.blender.org/",
         category: "Misc"
     },
     {
-        name: "gooverlay",
+        name: "Gooverlay",
         icon: "images/gooverlay.png",
         os: "Linux",
         link: "https://github.com/irvinlim/goverlay",
         category: "Games"
     },
     {
-        name: "moonlight",
+        name: "Moonlight",
         icon: "images/moonlight.png",
         os: "Linux",
         link: "https://moonlight-stream.org/",
         category: "Games"
     },
     {
-        name: "steam",
+        name: "Steam",
         icon: "images/steam.jpeg",
         os: "Linux",
         link: "https://store.steampowered.com/about/",
         category: "Games"
     },
     {
-        name: "plank",
+        name: "Plank",
         icon: "images/plank.jpeg",
         os: "Linux",
         link: "https://launchpad.net/plank",
         category: "Misc"
     },
     {
-        name: "multimc",
+        name: "Multimc",
         icon: "images/multimc.jpeg",
         os: "Linux",
         link: "https://multimc.org/",
         category: "Games"
     },
     {
-        name: "java",
+        name: "Java",
         icon: "images/java.jpeg",
         os: "Linux",
         link: "https://www.oracle.com/java/",
@@ -133,7 +133,7 @@ const programs = [
         category: "Misc"
     },
     {
-        name: "qBittorrent",
+        name: "QBittorrent",
         icon: "images/qbittorrent.jpeg",
         os: "Linux",
         link: "https://www.qbittorrent.org/",
@@ -164,6 +164,7 @@ const programs = [
 ];
 
 
+const randomTextElement = document.getElementById("random-text");
 const programList = document.getElementById("program-list");
 const allFilter = document.getElementById("all-filter");
 const linuxFilter = document.getElementById("linux-filter");
@@ -174,7 +175,9 @@ const gamesFilter = document.getElementById("games-filter");
 const miscFilter = document.getElementById("misc-filter");
 const searchBar = document.getElementById("search-bar");
 
-let originalPrograms = [];  // Store the original unsorted programs
+let originalPrograms = [...programs];
+let programIndex = 0;
+let typingInterval;
 
 const displayPrograms = (programArray) => {
     programList.innerHTML = "";
@@ -192,14 +195,35 @@ const displayPrograms = (programArray) => {
     });
 };
 
+function updateRandomText() {
+    if (programIndex >= originalPrograms.length) {
+        programIndex = 0;
+    }
+
+    const programName = originalPrograms[programIndex].name;
+    randomTextElement.textContent = programName;
+
+    programIndex++;
+
+    clearTimeout(typingInterval);
+    typingInterval = setTimeout(updateRandomText, 1000); // Wait for 1 second
+}
+
+function filterPrograms() {
+    const searchValue = searchBar.value.toLowerCase();
+    const filteredPrograms = originalPrograms.filter(program => program.name.toLowerCase().includes(searchValue));
+    displayPrograms(filteredPrograms);
+}
+
 function initializeProgramList() {
-    originalPrograms = [...programs];  // Copy the original unsorted programs
-    programs.sort((a, b) => a.name.localeCompare(b.name));  // Sort the programs alphabetically
+    programs.sort((a, b) => a.name.localeCompare(b.name));
     displayPrograms(programs);
+    updateRandomText();
 }
 
 initializeProgramList();
 
+// Add event listeners for filter buttons
 allFilter.addEventListener("click", () => {
     displayPrograms(programs);
 });
@@ -234,9 +258,7 @@ miscFilter.addEventListener("click", () => {
     displayPrograms(miscPrograms);
 });
 
+// Add event listener for search bar input
 searchBar.addEventListener("input", () => {
-    const searchValue = searchBar.value.toLowerCase();
-    const filteredPrograms = originalPrograms.filter(program => program.name.toLowerCase().includes(searchValue));
-    displayPrograms(filteredPrograms);
+    filterPrograms();
 });
-
