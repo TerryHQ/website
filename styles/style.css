@@ -1,73 +1,73 @@
 * {
-	box-sizing: border-box;
-	text-decoration: none;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 a {
-	color: #f2f2f2;
-	font-family: sans-serif;
+  color: #f2f2f2;
+  font-family: sans-serif;
 }
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
-	float: left;
-	width: 33.33%;
-	padding: 5px;
+  float: left;
+  width: 33.33%;
+  padding: 5px;
 }
 /* Clear floats after image containers */
 .row::after {
-	content: "";
-	clear: both;
-	display: table;
+  content: "";
+  clear: both;
+  display: table;
 }
 h1 {
-	color: #f2f2f2;
-	font-size: 14px;
-	font-family: sans-serif;
+  color: #f2f2f2;
+  font-size: 14px;
+  font-family: sans-serif;
 }
 h2 {
-	color: #f2f2f2;
-	font-size: 16px;
-	font-family: sans-serif;
+  color: #f2f2f2;
+  font-size: 16px;
+  font-family: sans-serif;
 }
 h3 {
-	color: #f2f2f2;
-	font-size: 18px;
-	font-family: sans-serif;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 p {
-	color: #f2f2f2;
-	font-size: 12px;
-	font-family: sans-serif;
+  color: #f2f2f2;
+  font-size: 12px;
+  font-family: sans-serif;
 }
 basicBox {
-	padding: 5px;
-	display: block;
+  padding: 5px;
+  display: block;
 }
 textAlienCenter {
-	text-align: center;
+  text-align: center;
 }
 img {
-	color: white;
-	font: 10px;
+  color: white;
+  font: 10px;
 }
 img.resize {
-	/*Recipe images resize with window*/
-	width: 354px;
-	max-width: 100%;
-	max-height: 100%;
+  /*Recipe images resize with window*/
+  width: 354px;
+  max-width: 100%;
+  max-height: 100%;
 }
 #gifs-rows img {
-	cursor: pointer;
+  cursor: pointer;
 }
 #gifs-rows .gif-file {
-	display: none;
+  display: none;
 }
 
 body {
-	background-color: rgb(33, 33, 33);
-	display: block;
-	margin: 0;
-	padding: 0;
-	height: 100%;
+  background-color: rgb(33, 33, 33);
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 .button {
   background-color: rgb(75, 75, 75);
@@ -76,117 +76,117 @@ body {
   align-self: center;
   padding: 5px 5px;
   width: 100px;
-  
+
   font-size: 15px;
 }
 .button:hover {
-	background-color: RoyalBlue;
-	transform: translateX(2px) translateY(2px);
+  background-color: RoyalBlue;
+  transform: translateX(2px) translateY(2px);
 }
 /*Navigation Bar*/
 /* Add a black background color to the top navigation */
 .topnav {
-	background-color: rgb(50, 50, 50);
-	overflow: hidden;
+  background-color: rgb(50, 50, 50);
+  overflow: hidden;
 }
 /* Style the links inside the navigation bar */
 .topnav a {
-	float: left;
-	color: rgb(242, 242, 242);
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 16px;
+  float: left;
+  color: rgb(242, 242, 242);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
 }
 /* Change the color of links on hover */
 .topnav a:hover {
-	background-color: rgb(34, 34, 34);
+  background-color: rgb(34, 34, 34);
 }
 .topnav a.selected {
-	background: rgb(34, 34, 34);
+  background: rgb(34, 34, 34);
 }
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* Slideshow container */
 .slideshow-container {
-	max-width: 1000px;
-	position: relative;
-	margin: auto;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 /* Caption text */
 .text {
-	color: #f2f2f2;
-	font-family: sans-serif;
-	font-size: 20px;
-	padding: 8px 12px;
-	position: absolute;
-	bottom: 1px; /*  bottom: 8px;, changes to make slide show text below slides*/
-	width: 100%;
-	text-align: top;
-	text-shadow: 1px 1px 0px rgb(255, 251, 0), 0 0 1em cyan, 0 0 0.1em rgb(50, 50, 50);
+  color: #f2f2f2;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 1px; /*  bottom: 8px;, changes to make slide show text below slides*/
+  width: 100%;
+  text-align: top;
+  text-shadow: 1px 1px 0px rgb(255, 251, 0), 0 0 1em cyan,
+    0 0 0.1em rgb(50, 50, 50);
 }
 /* Number text (1/3 etc) */
 .numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
 }
 .active {
-	background-color: rgb(75, 75, 75);
+  background-color: rgb(75, 75, 75);
 }
 /* Fading animation */
 .fade {
-	-webkit-animation-name: fade;
-	-webkit-animation-duration: 1.5s;
-	animation-name: fade;
-	animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 @-webkit-keyframes fade {
-	from {
-		opacity: 0.4;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fade {
-	from {
-		opacity: 0.4;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-	.text {
-		font-size: 11px;
-	}
+  .text {
+    font-size: 11px;
+  }
 }
 
-
 .footer {
-	position: fixed;
-  	left: 0;
-  	bottom: 0;
-  	width: 100%;
-	background-color: rgb(50, 50, 50);
-	color: white;
-	text-align: center;
- }
- 
- /*for social media links in footer*/
- .fa {
-	 padding: 10px;
-	 font-size: 50px;
-	 width: 50px;
-	 text-align: center;
-	 text-decoration: none;
-	 margin: 5px 2px;
-   }
-   .fa:hover {
-	 opacity: 0.7;
- }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  text-align: center;
+}
+
+/*for social media links in footer*/
+.fa {
+  padding: 10px;
+  font-size: 50px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.fa:hover {
+  opacity: 0.7;
+}
