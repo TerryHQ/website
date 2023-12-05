@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -138,7 +140,7 @@
             padding: 8px;
             border: 1px solid #666;
             border-radius: 4px;
-            width: 100%;
+            width: auto;
             box-sizing: border-box;
             color: #fff;
             background-color: #333;
@@ -159,16 +161,18 @@
             width: 100%;
         }
     </style>
+    
+    
     <title>Grid Calendar</title>
 </head>
 
 <body>
     <div id="namesList">
-        <label for="generalNames">Help Desk Workforce:</label>
-        <ul id="existingNames"></ul>
-        <p></p>
         <input type="text" id="singleNameInput" placeholder="Add Help Desk Personnel">
         <button onclick="addSingleName()">Add Name</button>
+        
+        <ul id="existingNames"></ul>
+        <p></p>
     </div>
 
     <div id="leaveForm">
@@ -210,14 +214,21 @@
     </div>
 
     <div id="calendar"></div>
+    
+    <div>
+        <button onclick="downloadCalendar()">Download Calendar</button>
+    </div>
 
     <script>
         let leaveEntries = [];
         let customNames = [];
         let generalDisplayNames = [];
-        const defaultNames = ["Vela"];
+        const defaultNames = [];
 
         window.onload = function () {
+            const currentDate = new Date();
+            document.getElementById("selectMonth").value = currentDate.getMonth();
+            document.getElementById("inputYear").value = currentDate.getFullYear();
             updateCalendar();
             displayExistingNames();
             populateLeaveDropdown();
@@ -336,6 +347,8 @@
                 calendarContainer.appendChild(emptyCell);
             }
 
+            let lastWorkedNames = [];
+
             for (let day = 1; day <= numberOfDays; day++) {
                 const calendarDay = document.createElement("div");
                 calendarDay.classList.add("day");
@@ -351,7 +364,7 @@
                     dayNumberDiv.textContent = day;
                     calendarDay.appendChild(dayNumberDiv);
 
-                    const selectedNames = getDiverseNames(namesArray, leaveEntries, day);
+                    const selectedNames = getDiverseNames(namesArray, leaveEntries, day, lastWorkedNames);
                     selectedNames.forEach(person => {
                         const personDiv = document.createElement("div");
                         personDiv.classList.add("person");
@@ -361,6 +374,8 @@
                         personDiv.textContent = person.name;
                         calendarDay.appendChild(personDiv);
                     });
+
+                    lastWorkedNames = selectedNames.map(person => person.name);
                 } else {
                     calendarDay.classList.add("weekend");
 
@@ -374,39 +389,45 @@
             }
         }
 
-        function getDiverseNames(namesArray, leaveEntries, currentDay) {
-            const selectedNames = [];
+ function getDiverseNames(namesArray, leaveEntries, currentDay, lastWorkedNames) {
+        const selectedNames = [];
 
-            const shuffledNames = shuffleArray([...namesArray]);
+        const shuffledNames = shuffleArray([...namesArray]);
 
-            const activeLeaveEntries = leaveEntries.filter(entry =>
-                currentDay >= entry.start.getDate() && currentDay <= entry.end.getDate()
-            );
+        const activeLeaveEntries = leaveEntries.filter(entry =>
+            currentDay >= entry.start.getDate() && currentDay <= entry.end.getDate()
+        );
 
-            for (const name of shuffledNames) {
-                if (selectedNames.length >= 2) {
-                    break;
-                }
-                if (!selectedNames.some(person => person.name === name) &&
-                    !activeLeaveEntries.some(entry => entry.names.includes(name))) {
-                    selectedNames.push({
-                        name,
-                        onLeave: false
-                    });
-                }
+        for (const name of shuffledNames) {
+            if (selectedNames.length >= 2 || (selectedNames.length >= 1 && namesArray.length <= 3)) {
+                break;
             }
 
-            activeLeaveEntries.forEach(entry => {
-                entry.names.forEach(name => {
-                    selectedNames.push({
-                        name,
-                        onLeave: true
-                    });
+            // Check if the person worked on the previous day, and if yes, skip them
+            if (lastWorkedNames.includes(name)) {
+                continue;
+            }
+
+            if (!selectedNames.some(person => person.name === name) &&
+                !activeLeaveEntries.some(entry => entry.names.includes(name))) {
+                selectedNames.push({
+                    name,
+                    onLeave: false
+                });
+            }
+        }
+
+        activeLeaveEntries.forEach(entry => {
+            entry.names.forEach(name => {
+                selectedNames.push({
+                    name,
+                    onLeave: true
                 });
             });
+        });
 
-            return selectedNames;
-        }
+        return selectedNames;
+    }
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -416,7 +437,7 @@
             return array;
         }
 
-            function removePersonFromWorkforce(name) {
+        function removePersonFromWorkforce(name) {
             // Remove the person from workforce arrays
             customNames = customNames.filter(person => person !== name);
             generalDisplayNames = generalDisplayNames.filter(person => person !== name);
@@ -429,6 +450,26 @@
             populateLeaveDropdown();
             updateCalendar();
         }
+        
+        function downloadCalendar() {
+    const calendarContainer = document.getElementById("calendar");
+
+    // Use html2canvas to capture the calendar container
+    html2canvas(calendarContainer).then(canvas => {
+        const imageData = canvas.toDataURL('image/png');
+
+        // Create a link element to download the image
+        const downloadLink = document.createElement('a');
+        downloadLink.href = imageData;
+        downloadLink.download = 'calendar.png';
+
+        // Append the link to the document and trigger a click event to download
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    });
+}
+
     </script>
 </body>
 
