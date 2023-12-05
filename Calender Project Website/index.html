@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1f1f1f;
+            color: #fff;
+        }
+
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #2f2f2f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 300px;
+        }
+
+        #calendar::after {
+            content: "";
+            grid-column: span 7;
+        }
+
+        .day {
+            border: 1px solid #404040;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .weekend {
+            background-color: #3f3f3f;
+        }
+
+        .workday {
+            background-color: #334c33;
+        }
+
+        .person {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #fff;
+            position: relative;
+        }
+
+        .person:hover .remove-button {
+            display: block;
+        }
+
+        .remove-button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            display: none;
+            cursor: pointer;
+            color: #ff8080;
+            font-weight: bold;
+        }
+
+        .day-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        .on-leave {
+            color: #ff8080;
+        }
+
+        #namesList {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #existingNames {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #existingNames li {
+            font-size: 14px;
+            padding: 8px;
+            border: 1px solid #666;
+            background-color: #2f2f2f;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        #leaveForm,
+        #monthYearForm {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        input,
+        select,
+        button {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #fff;
+            background-color: #333;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
+    <title>Grid Calendar</title>
+</head>
+
+<body>
+    <div id="namesList">
+        <label for="generalNames">Help Desk Workforce:</label>
+        <ul id="existingNames"></ul>
+        <p></p>
+        <input type="text" id="singleNameInput" placeholder="Add Help Desk Personnel">
+        <button onclick="addSingleName()">Add Name</button>
+    </div>
+
+    <div id="leaveForm">
+        <div class="form-group">
+            <label for="leaveName">Person taking leave:</label>
+            <select id="leaveNameInput"></select>
+        </div>
+        <div class="form-group">
+            <label for="leaveStart">Start Date:</label>
+            <input type="date" id="leaveStart">
+        </div>
+        <div class="form-group">
+            <label for="leaveEnd">End Date:</label>
+            <input type="date" id="leaveEnd">
+        </div>
+        <button onclick="addLeave()">Apply Leave</button>
+    </div>
+
+    <div id="monthYearForm">
+        <div class="form-group">
+            <select id="selectMonth" onchange="updateCalendar()">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" id="inputYear" placeholder="Enter year" onchange="updateCalendar()">
+        </div>
+    </div>
+
+    <div id="calendar"></div>
+
+    <script>
+        let leaveEntries = [];
+        let customNames = [];
+        let generalDisplayNames = [];
+        const defaultNames = ["Vela"];
+
+        window.onload = function () {
+            updateCalendar();
+            displayExistingNames();
+            populateLeaveDropdown();
+        };
+
+        function addLeave() {
+            const leaveNameInput = document.getElementById("leaveNameInput");
+            const leaveName = leaveNameInput.value;
+            const leaveStart = new Date(document.getElementById("leaveStart").value);
+            const leaveEnd = new Date(document.getElementById("leaveEnd").value);
+
+            if (leaveName && leaveStart && leaveEnd) {
+                const existingEntryIndex = leaveEntries.findIndex(entry =>
+                    entry.names.includes(leaveName)
+                );
+
+                if (existingEntryIndex !== -1) {
+                    leaveEntries.splice(existingEntryIndex, 1);
+                }
+
+                leaveEntries.push({
+                    names: [leaveName],
+                    start: leaveStart,
+                    end: leaveEnd
+                });
+                updateCalendar();
+            }
+        }
+
+        function updateGeneralNames() {
+            const generalNamesInput = document.getElementById("generalNamesInput").value;
+            generalDisplayNames = generalNamesInput.split(",").map(name => name.trim());
+            displayExistingNames();
+            updateCalendar();
+            populateLeaveDropdown();
+        }
+
+        function addSingleName() {
+            const singleNameInput = document.getElementById("singleNameInput");
+            const name = singleNameInput.value.trim();
+
+            if (name) {
+                if (!generalDisplayNames.includes(name)) {
+                    generalDisplayNames.push(name);
+                    displayExistingNames();
+                    updateCalendar();
+                    populateLeaveDropdown();
+                    singleNameInput.value = "";
+                } else {
+                    alert("Name is already in the workforce.");
+                }
+            }
+        }
+
+        function displayExistingNames() {
+            const existingNamesList = document.getElementById("existingNames");
+            existingNamesList.innerHTML = "";
+            const allNames = [...defaultNames, ...customNames, ...generalDisplayNames];
+            allNames.forEach(name => {
+                const listItem = document.createElement("li");
+                listItem.textContent = name;
+                listItem.addEventListener("mouseover", function () {
+                    listItem.querySelector(".remove-button").style.display = "block";
+                });
+                listItem.addEventListener("mouseleave", function () {
+                    listItem.querySelector(".remove-button").style.display = "none";
+                });
+                listItem.addEventListener("click", function () {
+                    removePersonFromWorkforce(name);
+                });
+
+                const removeButton = document.createElement("span");
+                removeButton.textContent = "X";
+                removeButton.classList.add("remove-button");
+                removeButton.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    removePersonFromWorkforce(name);
+                });
+
+                listItem.appendChild(removeButton);
+                existingNamesList.appendChild(listItem);
+            });
+        }
+
+        function populateLeaveDropdown() {
+            const leaveNameInput = document.getElementById("leaveNameInput");
+            leaveNameInput.innerHTML = "";
+            const allNames = [...defaultNames, ...customNames, ...generalDisplayNames];
+            allNames.forEach(name => {
+                const option = document.createElement("option");
+                option.value = name;
+                option.textContent = name;
+                leaveNameInput.appendChild(option);
+            });
+        }
+
+        function updateCalendar() {
+            const calendarContainer = document.getElementById("calendar");
+            calendarContainer.innerHTML = "";
+
+            const selectedMonth = document.getElementById("selectMonth").value;
+            const selectedYear = document.getElementById("inputYear").value || new Date().getFullYear();
+
+            const year = parseInt(selectedYear, 10);
+            const month = parseInt(selectedMonth, 10);
+
+            const lastDay = new Date(year, month + 1, 0);
+            const numberOfDays = lastDay.getDate();
+
+            const namesArray = [...defaultNames, ...customNames, ...generalDisplayNames];
+
+            const firstDayOfWeek = new Date(year, month, 1).getDay();
+            for (let i = 0; i < firstDayOfWeek; i++) {
+                const emptyCell = document.createElement("div");
+                emptyCell.classList.add("day");
+                calendarContainer.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= numberOfDays; day++) {
+                const calendarDay = document.createElement("div");
+                calendarDay.classList.add("day");
+
+                const dayOfWeek = new Date(year, month, day).getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+
+                if (!isWeekend) {
+                    calendarDay.classList.add("workday");
+
+                    const dayNumberDiv = document.createElement("div");
+                    dayNumberDiv.classList.add("day-number");
+                    dayNumberDiv.textContent = day;
+                    calendarDay.appendChild(dayNumberDiv);
+
+                    const selectedNames = getDiverseNames(namesArray, leaveEntries, day);
+                    selectedNames.forEach(person => {
+                        const personDiv = document.createElement("div");
+                        personDiv.classList.add("person");
+                        if (person.onLeave) {
+                            personDiv.classList.add("on-leave");
+                        }
+                        personDiv.textContent = person.name;
+                        calendarDay.appendChild(personDiv);
+                    });
+                } else {
+                    calendarDay.classList.add("weekend");
+
+                    const dayNumberDiv = document.createElement("div");
+                    dayNumberDiv.classList.add("day-number");
+                    dayNumberDiv.textContent = day;
+                    calendarDay.appendChild(dayNumberDiv);
+                }
+
+                calendarContainer.appendChild(calendarDay);
+            }
+        }
+
+        function getDiverseNames(namesArray, leaveEntries, currentDay) {
+            const selectedNames = [];
+
+            const shuffledNames = shuffleArray([...namesArray]);
+
+            const activeLeaveEntries = leaveEntries.filter(entry =>
+                currentDay >= entry.start.getDate() && currentDay <= entry.end.getDate()
+            );
+
+            for (const name of shuffledNames) {
+                if (selectedNames.length >= 2) {
+                    break;
+                }
+                if (!selectedNames.some(person => person.name === name) &&
+                    !activeLeaveEntries.some(entry => entry.names.includes(name))) {
+                    selectedNames.push({
+                        name,
+                        onLeave: false
+                    });
+                }
+            }
+
+            activeLeaveEntries.forEach(entry => {
+                entry.names.forEach(name => {
+                    selectedNames.push({
+                        name,
+                        onLeave: true
+                    });
+                });
+            });
+
+            return selectedNames;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+            function removePersonFromWorkforce(name) {
+            // Remove the person from workforce arrays
+            customNames = customNames.filter(person => person !== name);
+            generalDisplayNames = generalDisplayNames.filter(person => person !== name);
+
+            // Remove the person from the leaveEntries array
+            leaveEntries = leaveEntries.filter(entry => !entry.names.includes(name));
+
+            // Update UI components
+            displayExistingNames();
+            populateLeaveDropdown();
+            updateCalendar();
+        }
+    </script>
+</body>
+
+</html>
