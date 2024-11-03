@@ -105,7 +105,8 @@ body {
 }
 
 .topnav a:hover {
-  background-color: rgb(34, 34, 34);
+  background-color: RoyalBlue;
+  transform: translate(2px, -2px);
 }
 
 .topnav a.selected {
@@ -200,6 +201,16 @@ body {
   .text {
     font-size: 16px; /* Adjust text size in slides */
   }
+
+  .footer {
+    position: relative; /* Make footer relative for stacking */
+    padding: 20px 0; /* Padding for the footer */
+  }
+
+  .fa {
+    padding: 10px; /* Smaller icon padding */
+    font-size: 30px; /* Smaller icon size */
+  }
 }
 
 .footer {
@@ -213,8 +224,8 @@ body {
 }
 
 .fa {
-  padding: 10px;
-  font-size: 50px;
+  padding: 6px;
+  font-size: 25px;
   width: 50px;
   text-align: center;
   text-decoration: none;
@@ -222,5 +233,6 @@ body {
 }
 
 .fa:hover {
-  opacity: 0.7;
+  background-color: RoyalBlue;
+  transform: translate(2px, -2px);
 }
