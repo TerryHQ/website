@@ -10,8 +10,20 @@
 
 <body>
     <div class="background-iframe">
-        <iframe src="https://rezmason.github.io/matrix/?version=3d" frameborder="0"></iframe>
+        <iframe id="matrix-frame" src="https://rezmason.github.io/matrix/?version=3d" frameborder="0"></iframe>
     </div>
+    
+    <script>
+        function isHardwareAccelerationEnabled() {
+            // Simple check for hardware acceleration
+            return !!window.WebGLRenderingContext && !!document.createElement('canvas').getContext('webgl');
+        }
+    
+        if (!isHardwareAccelerationEnabled()) {
+            document.getElementById('matrix-frame').src = "https://rezmason.github.io/matrix/";
+        }
+    </script>
+    
 
     <div class="topnav">
         <a style="color:lightgreen;" href="index.html" class="selected">Home</a>
@@ -43,7 +55,7 @@
             <h3 style="color:skyblue;">Goals</h3>
             <ul style="list-style-type: none; padding: 0; margin: 0;">
             <li style="color:rgb(202, 252, 168);">Become an NCO ✅</li>
-            <li style="color:white;">Create videos teaching people tech and code.</li>
+            <li style="color:white;">Teach people tech and code online.</li>
             <li style="color:rgb(202, 252, 168);">Obtain CompTIA IT Fundamentials ✅</li>
             <li style="color:rgb(202, 252, 168);">Obtain CompTIA Sec+ ✅</li>
             <li style="color:white;">Obtain CompTIA Linux+</li>
@@ -51,7 +63,7 @@
             <li style="color:white;">Obtain CompTIA A+</li>
             <li style="color:white;">Obtain Cisco CCNA</li>
             <li style="color:white;">Obtain Ethical Hacker</li>
-            <li style="color:white;">Obtain Computer Science and Cyber Security degrees</li>
+            <li style="color:white;">Obtain Computer Science degree</li>
             <li style="color:rgb(202, 252, 168)">Create a simple game ✅</li>
             <li style="color:white;">Release a game on Steam</li>
             <li style="color:rgb(202, 252, 168);">Create free and premium spigot plugins ✅</li>
@@ -59,15 +71,19 @@
         </center>
     </div>
 
-    <div class="basicBox" style="height: 375px;"></div>
+    <div class="basicBox" style="height: 160px;"></div>
 
     <center>
-        <div class="footer">
+        <div class="footer" style="position: relative;">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <a href="#" class="fa fa-twitter"></a>
             <a href="https://www.youtube.com/channel/UCARfzYBvv_awloDDeVULvAQ" class="fa fa-youtube"></a>
             <a href="#" class="fa fa-instagram"></a>
+            <div style="position: absolute; right: 0; bottom: 0; color: gray; padding: 10px;">
+                "I can only show you the door, you're the one that has to walk through it."
+            </div>
         </div>
     </center>
+    
 </body>
 </html>
