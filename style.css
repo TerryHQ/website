@@ -95,6 +95,17 @@ body {
   display: flex; /* Use flexbox for navigation */
   flex-wrap: nowrap; /* Prevent wrapping */
   overflow-x: auto; /* Allow horizontal scrolling */
+  position: relative; /* Positioning for the pseudo-element */
+}
+
+.topnav::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 30px; /* Width of the gradient */
+  height: 100%;
+  background: linear-gradient(to right, rgba(50, 50, 50, 1), rgba(50, 50, 50, 0)); /* Gradient effect */
+  pointer-events: none; /* Prevent interaction */
 }
 
 .topnav a {
@@ -103,7 +114,6 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 16px;
-  flex: 0 0 auto; /* Prevent flex items from shrinking */
 }
 
 .topnav a:hover {
@@ -113,6 +123,18 @@ body {
 
 .topnav a.selected {
   background: rgb(34, 34, 34);
+}
+
+.scroll-indicator {
+  font-size: 18px; /* Adjust size as needed */
+  color: rgb(242, 242, 242);
+  margin-left: 10px; /* Spacing from the last link */
+  align-self: center; /* Center it vertically */
+  display: none; /* Hide by default */
+}
+
+.topnav:hover .scroll-indicator {
+  display: inline; /* Show on hover */
 }
 
 .slideshow-container {
@@ -131,7 +153,7 @@ body {
   width: 100%;
   text-align: top;
   text-shadow: 1px 1px 0px rgb(255, 251, 0), 0 0 1em cyan,
-      0 0 0.1em rgb(50, 50, 50);
+    0 0 0.1em rgb(50, 50, 50);
 }
 
 .background-iframe {
@@ -168,51 +190,50 @@ body {
 
 @keyframes fade {
   from {
-      opacity: 0.4;
+    opacity: 0.4;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 /* Media Queries for Mobile */
 @media only screen and (max-width: 768px) {
   .column {
-      width: 100%; /* Stack columns */
-      margin-bottom: 20px; /* Space between items */
+    width: 100%; /* Stack columns */
+    margin-bottom: 20px; /* Space between items */
   }
 
   h1, h2, h3 {
-      font-size: 12px; /* Smaller headings */
+    font-size: 12px; /* Smaller headings */
   }
 
   p {
-      font-size: 10px; /* Smaller paragraphs */
+    font-size: 10px; /* Smaller paragraphs */
   }
 
   .button {
-      width: 100%; /* Full width buttons */
-      font-size: 12px; /* Smaller font for buttons */
+    width: 100%; /* Full width buttons */
+    font-size: 12px; /* Smaller font for buttons */
   }
 
   .topnav a {
-      padding: 10px; /* Adjust padding */
-      font-size: 14px; /* Smaller font for nav links */
-      white-space: nowrap; /* Prevent text from wrapping */
+    padding: 10px; /* Adjust padding */
+    font-size: 14px; /* Smaller font for nav links */
   }
 
   .text {
-      font-size: 16px; /* Adjust text size in slides */
+    font-size: 16px; /* Adjust text size in slides */
   }
 
   .footer {
-      position: relative; /* Make footer relative for stacking */
-      padding: 20px 0; /* Padding for the footer */
+    position: relative; /* Make footer relative for stacking */
+    padding: 20px 0; /* Padding for the footer */
   }
 
   .fa {
-      padding: 10px; /* Smaller icon padding */
-      font-size: 30px; /* Smaller icon size */
+    padding: 10px; /* Smaller icon padding */
+    font-size: 30px; /* Smaller icon size */
   }
 }
 
