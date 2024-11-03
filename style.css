@@ -190,7 +190,7 @@ body {
 @media only screen and (max-width: 768px) {
   .column {
       width: 100%; /* Stack columns */
-      margin-bottom: 20px; /* Space between items */
+      margin-bottom: 10px; /* Space between items */
   }
 
   h1, h2, h3 {
@@ -208,21 +208,21 @@ body {
 
   .topnav a {
       padding: 10px; /* Adjust padding */
-      font-size: 14px; /* Smaller font for nav links */
+      font-size: 12px; /* Smaller font for nav links */
   }
 
   .text {
-      font-size: 16px; /* Adjust text size in slides */
+      font-size: 14px; /* Adjust text size in slides */
   }
 
   .footer {
       position: relative; /* Make footer relative for stacking */
-      padding: 20px 0; /* Padding for the footer */
+      padding: 10px 0; /* Padding for the footer */
   }
 
   .fa {
       padding: 10px; /* Smaller icon padding */
-      font-size: 30px; /* Smaller icon size */
+      font-size: 15px; /* Smaller icon size */
   }
 }
 
