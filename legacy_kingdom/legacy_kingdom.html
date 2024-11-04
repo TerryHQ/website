@@ -21,10 +21,22 @@
     <div class="basicBox" style="padding: 20px;">
         <center>
             <img src="images/server_banner_not_gif.png" alt="Loading...">
-            <h1 style="color:red;">! Currently Under Maintenance !</h1>
-            <p style="color:lightgreen;">Server IP: legacykingdom.ddns.net</p>
+            <h2 id="server-ip" style="cursor: pointer; color: rgb(248, 228, 117);">legacykingdom.ddns.net</h2>
         </center>
     </div>
+    
+    <script>
+        // Function to copy the server IP to clipboard
+        document.getElementById("server-ip").addEventListener("click", function() {
+            const text = this.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Server IP copied: " + text);
+            }).catch(err => {
+                console.error("Could not copy text: ", err);
+            });
+        });
+    </script>
+    
 
     <!-- Row 1 -->
     <div class="row">
