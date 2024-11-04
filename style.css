@@ -210,8 +210,8 @@ body {
   .topnav a {
     flex: 1; /* Make all links share equal space */
     text-align: center;
-    padding: 6px; /* Reduced padding for better fit */
-    font-size: 14px; /* Adjust font size */
+    padding: 4px; /* Further reduce padding for better fit */
+    font-size: 12px; /* Adjust font size for mobile */
   }
 
   .text {
@@ -267,11 +267,11 @@ body {
   }
 
   .topnav a {
-    font-size: 14px; /* Adjust font size */
-    padding: 6px; /* Adjust padding for better fit */
+    font-size: 12px; /* Further adjust font size */
+    padding: 4px; /* Further reduce padding for better fit */
   }
 
   .topnav i {
-    font-size: 20px; /* Adjust icon size */
+    font-size: 18px; /* Adjust icon size */
   }
 }
