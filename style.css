@@ -1,3 +1,4 @@
+/* General Reset */
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -43,10 +44,10 @@ p { font-size: 12px; }
 }
 
 img {
-  display: block; /* Ensures images behave like block elements */
-  margin: 0 auto; /* Center images */
-  max-width: 100%; /* Responsive width */
-  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
 }
 
 #gifs-rows img {
@@ -86,6 +87,7 @@ body {
   transform: translate(2px, -2px);
 }
 
+/* Original Topnav for Desktop */
 .topnav {
   background-color: rgb(50, 50, 50);
   display: flex;
@@ -137,8 +139,7 @@ body {
   bottom: 1px;
   width: 100%;
   text-align: top;
-  text-shadow: 1px 1px 0px rgb(255, 251, 0), 0 0 1em cyan,
-      0 0 0.1em rgb(50, 50, 50);
+  text-shadow: 1px 1px 0px rgb(255, 251, 0), 0 0 1em cyan, 0 0 0.1em rgb(50, 50, 50);
 }
 
 .background-iframe {
@@ -174,51 +175,57 @@ body {
 }
 
 @keyframes fade {
-  from {
-      opacity: 0.4;
-  }
-  to {
-      opacity: 1;
-  }
+  from { opacity: 0.4; }
+  to { opacity: 1; }
 }
 
 /* Media Queries for Mobile */
 @media only screen and (max-width: 768px) {
   .column {
-      width: 100%; /* Stack columns */
-      margin-bottom: 10px; /* Space between items */
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   h1, h2, h3 {
-      font-size: 12px; /* Smaller headings */
+    font-size: 12px;
   }
 
   p {
-      font-size: 10px; /* Smaller paragraphs */
+    font-size: 10px;
   }
 
   .button {
-      width: 100%; /* Full width buttons */
-      font-size: 12px; /* Smaller font for buttons */
+    width: 100%;
+    font-size: 12px;
+  }
+
+  /* Updated Mobile Topnav - Fit Items Without Scrollbar */
+  .topnav {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between; /* Spread items evenly */
+    padding: 0 5px; /* Reduce overall padding */
   }
 
   .topnav a {
-      padding: 10px; /* Adjust padding */
-      font-size: 12px; /* Smaller font for nav links */
+    flex: 1; /* Make all links share equal space */
+    text-align: center;
+    padding: 8px; /* Reduce padding for better fit */
+    font-size: 14px; /* Adjust font size */
   }
 
   .text {
-      font-size: 14px; /* Adjust text size in slides */
+    font-size: 14px;
   }
 
   .footer {
-      position: relative; /* Make footer relative for stacking */
-      padding: 10px 0; /* Padding for the footer */
+    position: relative;
+    padding: 10px 0;
   }
 
   .fa {
-      padding: 10px; /* Smaller icon padding */
-      font-size: 15px; /* Smaller icon size */
+    padding: 10px;
+    font-size: 15px;
   }
 }
 
