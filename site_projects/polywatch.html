@@ -7,6 +7,39 @@
     <link rel="shortcut icon" href="../favicon.ico"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Terry Projects</title>
+    <style>
+        .media-container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px auto;
+            max-width: 1200px; /* Set a max-width to prevent excessive stretching */
+            width: 90%; /* Take up most of the container width */
+        }
+        
+        .media-container video,
+        .media-container img {
+            width: 48%;
+            height: auto;
+            object-fit: cover;
+            min-width: 400px; /* Ensure minimum size on larger screens */
+        }
+
+        @media (max-width: 900px) {
+            .media-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .media-container video,
+            .media-container img {
+                width: 100%;
+                min-width: unset;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
@@ -25,16 +58,24 @@
         <div class="row">
             <div class="column">
                 <h2>Polywatch</h2>
-                <!-- Video player added here -->
-                <video width="50%" controls>
-                    <source src="../videos/polywatch_video_01.mp4" type="video/mp4">
-                    Your browser does not support the video player.
-                </video>
-                <img
-                    src="../images/polywatch01.png"
-                    alt="Loading..."
-                    style="width:100%; height:auto; margin-top: 20px;"
-                />
+                <div class="media-container">
+                    <img
+                        src="../images/polywatch01.png"
+                        alt="Loading..."
+                    />
+                    <video controls>
+                        <source src="../videos/polywatch_video_01.mp4" type="video/mp4">
+                        Your browser does not support the video player.
+                    </video>
+                    <video controls>
+                        <source src="../videos/polywatch_video_02.mp4" type="video/mp4">
+                        Your browser does not support the video player.
+                    </video>
+                    <video controls>
+                        <source src="../videos/polywatch_video_03.mp4" type="video/mp4">
+                        Your browser does not support the video player.
+                    </video>
+                </div>
                 <h1>A multiplayer FPS game inspired by games like Team Fortress 2 and Overwatch.</h1>
                 <p class="button">
                     <a
