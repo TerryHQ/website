@@ -1,99 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="shortcut icon" href="favicon.ico"/> 
-    <title>Terry Projects</title>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
-    <div class="topnav">
-        <a style="color:gold;" href="legacy_kingdom/legacy_kingdom.html"><i class="fa fa-home"></i><span class="nav-text">LK</span></a> 
-        <a style="color:lightgreen;" href="index.html"><i class="fa fa-address-card"></i><span class="nav-text">About</span></a> 
-        <a style="color:skyblue;" href="projects.html"class="selected"><i class="fa fa-gears"></i><span class="nav-text">Projects</span></a>
-    </div>
-
-    <div class="basicBox">
-        <div class="row">
-            <!--<div class="column">
-                <h2 style="text-align: center;">Space Fighter</h2>
-                <img src="images/spacefighter01.png" alt="Space Fighter" style="width:100%">
-                <center><p class="button"><a href="site_projects/space_fighter.html">Visit</a></p></center>
-            </div>-->
-            
-            <div class="column">
-                <h2 style="text-align: center;">Polywatch</h2>
-                <img src="images/polywatch01.png" alt="Polywatch" style="width:100%">
-                <center><p class="button"><a href="site_projects/polywatch.html">Visit</a></p></center>
+  <header>
+    <nav>
+      <div class="nav-buttons">
+        <a href="index.html" class="nav-btn"><i class="fa fa-home"></i> Home</a>
+        <a href="projects.html" class="nav-btn"><i class="fa fa-archive"></i> Projects</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1>Projects</h1>
+      <div class="projects-list">
+        <a class="project-card" href="korvia.html" tabindex="0" aria-label="Korvia: Fast-paced space shooter in Godot. Defend your galaxy, upgrade your ship, compete for high scores!">
+          <div class="project-thumb" title="Game">🎮</div>
+          <div class="project-info">
+            <div class="project-title">Korvia</div>
+            <div class="project-desc">
+              Multiplayer FPS, Destroy the aliens and there machines!
             </div>
-
-            <div class="column">
-                <h2 style="text-align: center;">Space Fighter 2</h2>
-                <img src="images/space_fighter_godot.png" alt="Space Fighter 2" style="width:100%">
-                <center><p class="button"><a href="site_projects/space_fighter_2.html">Visit</a></p></center>
+            <div class="project-tags">
+              <span class="project-tag">Godot</span>
+              <span class="project-tag">FPS</span>
+              <span class="project-tag">Action</span>
             </div>
-        </div>
-
-        <!-- Uncomment this section if needed -->
-        <!-- <div class="row">
-            <div class="column">
-                <h2>N/A, Website</h2>
-                <img src="images/program.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
+          </div>
+        </a>
+        <a class="project-card" href="legacykingdom.html" tabindex="0" aria-label="Legacy Kingdom: Minecraft Server landing page">
+          <div class="project-thumb" title="Minecraft">⛏️</div>
+          <div class="project-info">
+            <div class="project-title">Legacy Kingdom</div>
+            <div class="project-desc">
+              A Minecraft server with kingdoms, quests, custom plugins, and a vibrant community!
             </div>
-            <div class="column">
-                <h2>N/A, Website</h2>
-                <img src="images/program.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
+            <div class="project-tags">
+              <span class="project-tag">Minecraft</span>
+              <span class="project-tag">Server</span>
+              <span class="project-tag">Community</span>
             </div>
-            <div class="column">
-                <h2>N/A, Website</h2>
-                <img src="images/program.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
+          </div>
+        </a>
+        <a class="project-card" href="https://www.spigotmc.org/resources/authors/xterryx.1598949/" target="_blank" rel="noopener noreferrer" tabindex="0" aria-label="Minecraft Server Plugins: View various Minecraft server plugins on Google">
+          <div class="project-thumb" title="Plugins">🔌</div>
+          <div class="project-info">
+            <div class="project-title">Spigot Plugins</div>
+            <div class="project-desc">
+              Minecraft plugins from Terry.
             </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <h2>Place Holder</h2>
-                <img src="images/BlankImage-580x326.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
+            <div class="project-tags">
+              <span class="project-tag">Minecraft</span>
+              <span class="project-tag">Plugins</span>
+              <span class="project-tag">Java</span>
             </div>
-            <div class="column">
-                <h2>Place Holder</h2>
-                <img src="images/BlankImage-580x326.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
-            </div>
-            <div class="column">
-                <h2>Place Holder</h2>
-                <img src="images/BlankImage-580x326.png" alt="Loading..." style="width:100%">
-                <p class="button"><a href="#">Visit</a></p>
-            </div>
-        </div> -->
-    </div>
-    
-    <center>
-        <h2>Other Projects</h2>
-        <ul style="list-style-type: none; padding: 0; margin: 0;">
-            <li><a style="color:gold;" href="https://www.spigotmc.org/resources/authors/xterryx.1598949/">Spigot MC Plugins</a></li>
-            <li><a style="color:gold;" href="site_projects/Calender Project Website/index.html">Help Desk Tracker</a></li>
-            <li><a style="color:gold;" href="site_projects/Army Links/index.html">Army Links</a></li>
-            <li><a style="color:gold;" href="site_projects/Vapebar Website/vapebarhome.html">Vapebar</a></li>
-            <li><a style="color:gold;" href="site_projects/Terrys Program List Website/index.html">App List</a></li>
-            <li><a style="color:gold;" href="gallery.html">Gallery</a></li> 
-        </ul>
-    </center>
-
-    <div class="basicBox" style="height: 260px;"></div>
-
-    <center>
-        <div class="footer" style="position: relative;">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="https://www.youtube.com/channel/UCARfzYBvv_awloDDeVULvAQ" class="fa fa-youtube"></a>
-            <a href="#" class="fa fa-instagram"></a>
-        </div>
-    </center>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    "I can only show you the door, you're the one that has to walk through it" – Morpheus
+  </footer>
+  <script src="main.js"></script>
 </body>
 </html>

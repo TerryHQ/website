@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legacy Kingdom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <style>
+    .recipes-gallery { width:100%; margin:0 auto; }
+    .recipes-row {
+      display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 1.4rem;
+    }
+    .recipes-col {
+      flex: 1 1 220px; max-width: 270px; min-width: 180px; margin: 0 10px 18px 10px; text-align: center;
+      background: var(--card-bg, #23232ad5); border-radius: var(--radius,0.75rem);
+      box-shadow: var(--shadow, 0 4px 16px 0 #0005); padding: 1rem 0.5rem;
+    }
+    .recipes-col h2 { color: lightgreen; font-size: 1.1rem; margin-bottom: .8rem; }
+    .recipes-col img { max-width: 94%; border-radius: 0.5rem; background: #121215; }
+    @media (max-width: 800px) {
+      .recipes-row { flex-direction: column; align-items: center; }
+      .recipes-col { width: 96%; margin: 8px 0; }
+    }
+    /* Add a little style for the server banner */
+    .lk-server-banner {
+      display: block;
+      margin: 0.6rem auto 0.2rem auto;
+      max-width: 410px;
+      width: 97%;
+      height: auto;
+      image-rendering: crisp-edges;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-buttons">
+        <a href="index.html" class="nav-btn"><i class="fa fa-home"></i> Home</a>
+        <a href="projects.html" class="nav-btn"><i class="fa fa-archive"></i> Projects</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="home-header">
+      <!-- Server Banner replaces the old title! -->
+      <img src="./images/lk_server_banner_not_gif.png" alt="Legacy Kingdom Banner" class="lk-server-banner">
+      <hr>
+    </div>
+    <div style="color:var(--text-muted);text-align:center;max-width:520px;margin:0 auto 1.4rem auto;font-size:1.08rem;">
+      A unique Minecraft survival experience.<br>
+      legacykingdom.ddns.net<br>
+    </div>
+
+    <!-- Slideshow -->
+    <div style="display:flex;justify-content:center;">
+      <div class="legacykingdom-slideshow" id="slideshow">
+        <button class="legacykingdom-slide-btn left" type="button">&#8592;</button>
+        <img src="images/lk_slideshow_custom_mobs.png" class="legacykingdom-slide-img" id="slide-img" alt="Legacy Kingdom Screenshot">
+        <button class="legacykingdom-slide-btn right" type="button">&#8594;</button>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div class="legacykingdom-slideshow-dots" id="slideshow-dots"></div>
+    </div>
+
+    <!-- Discord Button: Smaller, after facts (facts removed) -->
+    <div style="display: flex; justify-content: center;">
+      <a href="https://discord.gg/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+         class="legacykingdom-discord-btn"
+         style="margin:0.4rem auto 2.1rem auto;max-width:148px;padding:.38em 1.1em;font-size:0.99rem;">
+        <i class="fa fa-discord"></i> Join Discord
+      </a>
+    </div>
+
+    <!-- Dropdown: Server Commands -->
+    <div class="dropdown-section" id="commands-section">
+      <div class="dropdown-header" onclick="toggleDropdown('commands-section')">
+        🛠 Commands <span class="dropdown-arrow">&#9654;</span>
+      </div>
+      <div class="dropdown-content">
+        <!-- Messaging -->
+        <h4 style="color:lightgreen;">Messaging</h4>
+        <ul>
+          <li><span style="color:gold;">/message [target] [message]</span> <span style="color:white;">Sends a message to a specific player.</span></li>
+        </ul>
+        <!-- Land Claiming -->
+        <h4 style="color:lightgreen;">Land Claiming</h4>
+        <ul>
+          <li><span style="color:gold;">/claim</span> <span style="color:white;">Claim the chunk for <span style="color:red;">-$1000</span></span></li>
+          <li><span style="color:gold;">/unclaim</span> <span style="color:white;">Unclaim and get <span style="color:green;">+$1000</span></span></li>
+          <li><span style="color:gold;">/claimShow</span> <span style="color:green;">Green = Not Claimed,</span> <span style="color:red;">Red = Others Claim,</span> <span style="color:gold;">Gold = Your claim</span></li>
+        </ul>
+        <!-- Economy -->
+        <h4 style="color:lightgreen;">Economy</h4>
+        <ul>
+          <li><span style="color:gold;">/balance</span> <span style="color:white;">Shows your money.</span></li>
+          <li><span style="color:gold;">/baltop</span> <span style="color:white;">See top balances.</span></li>
+          <li><span style="color:gold;">/pay [target] [amount]</span> <span style="color:white;">Pay another player.</span></li>
+        </ul>
+        <!-- Teleporting -->
+        <h4 style="color:lightgreen;">Teleporting</h4>
+        <ul>
+          <li><span style="color:gold;">/tpa [player]</span> <span style="color:white;">Request to teleport to a player.</span></li>
+          <li><span style="color:gold;">/sethome</span> <span style="color:white;">Set your home location.</span></li>
+          <li><span style="color:gold;">/home</span> <span style="color:white;">Teleport to your home.</span></li>
+          <li><span style="color:gold;">/spawn</span> <span style="color:white;">Teleport to spawn.</span></li>
+          <li><span style="color:gold;">/wild</span> <span style="color:white;">Random teleport.</span></li>
+          <li><span style="color:gold;">/back</span> <span style="color:white;">Go to last location.</span></li>
+        </ul>
+        <!-- Inventory -->
+        <h4 style="color:lightgreen;">Inventory</h4>
+        <ul>
+          <li><span style="color:gold;">/shop</span> <span style="color:white;">Open shop GUI.</span></li>
+          <li><span style="color:gold;">/enderchest</span> <span style="color:white;">Open enderchest GUI.</span></li>
+          <li><span style="color:gold;">/workbench</span> <span style="color:white;">Open workbench GUI.</span></li>
+          <li><span style="color:gold;">/clear</span> <span style="color:white;">Clear inventory.</span></li>
+          <li><span style="color:gold;">/hat</span> <span style="color:white;">Put item in hand on head.</span></li>
+        </ul>
+        <!-- Misc -->
+        <h4 style="color:lightgreen;">Misc</h4>
+        <ul>
+          <li><span style="color:gold;">/suicide</span> <span style="color:white;">Kills you.</span></li>
+          <li><span style="color:gold;">/rules</span> <span style="color:white;">Show rules.</span></li>
+          <li><span style="color:gold;">/ping</span> <span style="color:white;">Your ping.</span></li>
+          <li><span style="color:gold;">/ping [target]</span> <span style="color:white;">Player's ping.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RECIPES GALLERY -->
+    <div class="dropdown-section" id="recipes-section">
+      <div class="dropdown-header" onclick="toggleDropdown('recipes-section')">
+        🍳 Recipes <span class="dropdown-arrow">&#9654;</span>
+      </div>
+      <div class="dropdown-content">
+        <div class="recipes-gallery">
+          <div class="recipes-row">
+            <div class="recipes-col"><h2>Chain Helmet</h2><img src="images/recipes/ChainHelmet.png" alt="Chain Helmet"></div>
+            <div class="recipes-col"><h2>Chain Leggings</h2><img src="images/recipes/ChainLeggings.png" alt="Chain Leggings"></div>
+            <div class="recipes-col"><h2>Chest</h2><img src="images/recipes/Chest.png" alt="Chest"></div>
+            <div class="recipes-col"><h2>Crying Obsidian</h2><img src="images/recipes/CryingObsidian.png" alt="Crying Obsidian"></div>
+            <div class="recipes-col"><h2>Dead Bush</h2><img src="images/recipes/DeadBush.png" alt="Dead Bush"></div>
+            <div class="recipes-col"><h2>Diamond Horse Armor</h2><img src="images/recipes/DiamondHorseArmor.png" alt="Diamond Horse Armor"></div>
+            <div class="recipes-col"><h2>Elytra</h2><img src="images/recipes/Elytra.png" alt="Elytra"></div>
+            <div class="recipes-col"><h2>End Portal Frame</h2><img src="images/recipes/EndPortalFrame.png" alt="End Portal Frame"></div>
+            <div class="recipes-col"><h2>EXP Bottle</h2><img src="images/recipes/EXPBottle.png" alt="EXP Bottle"></div>
+            <div class="recipes-col"><h2>Fire Charge</h2><img src="images/recipes/FireCharge.png" alt="Fire Charge"></div>
+            <div class="recipes-col"><h2>Flint</h2><img src="images/recipes/Flint.png" alt="Flint"></div>
+            <div class="recipes-col"><h2>Glow Berries</h2><img src="images/recipes/GlowBerrys.png" alt="Glow Berries"></div>
+            <div class="recipes-col"><h2>Glowing Ink Sac</h2><img src="images/recipes/GlowingInkSac.png" alt="Glowing Ink Sac"></div>
+            <div class="recipes-col"><h2>Glow Lichen</h2><img src="images/recipes/GlowLichen.png" alt="Glow Lichen"></div>
+            <div class="recipes-col"><h2>Gold Horse Armor</h2><img src="images/recipes/GoldHorseArmor.png" alt="Gold Horse Armor"></div>
+            <div class="recipes-col"><h2>Iron Horse Armor</h2><img src="images/recipes/IronHorseArmor.png" alt="Iron Horse Armor"></div>
+            <div class="recipes-col"><h2>Leather Horse Armor</h2><img src="images/recipes/LeatherHorseArmor.png" alt="Leather Horse Armor"></div>
+            <div class="recipes-col"><h2>Light Block</h2><img src="images/recipes/LightBlock.png" alt="Light Block"></div>
+            <div class="recipes-col"><h2>Magma Block</h2><img src="images/recipes/MagmaBlock.png" alt="Magma Block"></div>
+            <div class="recipes-col"><h2>Name Tag</h2><img src="images/recipes/NameTag.png" alt="Name Tag"></div>
+            <div class="recipes-col"><h2>OP Apple</h2><img src="images/recipes/OPApple.png" alt="OP Apple"></div>
+            <div class="recipes-col"><h2>Poisonous Potato</h2><img src="images/recipes/PoisonousPotato.png" alt="Poisonous Potato"></div>
+            <div class="recipes-col"><h2>Red Mushroom Block</h2><img src="images/recipes/RedMushroomBlock.png" alt="Red Mushroom Block"></div>
+            <div class="recipes-col"><h2>Repeater</h2><img src="images/recipes/Repeater.png" alt="Repeater"></div>
+            <div class="recipes-col"><h2>Saddle</h2><img src="images/recipes/Saddle.png" alt="Saddle"></div>
+            <div class="recipes-col"><h2>Sculk Sensor</h2><img src="images/recipes/SculkSensor.png" alt="Sculk Sensor"></div>
+            <div class="recipes-col"><h2>Shroom Light</h2><img src="images/recipes/ShroomLight.png" alt="Shroom Light"></div>
+            <div class="recipes-col"><h2>Sponge</h2><img src="images/recipes/Sponge.png" alt="Sponge"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- ENCHANTS GALLERY (GIFs) -->
+     <div class="dropdown-section" id="enchants-section">
+      <div class="dropdown-header" onclick="toggleDropdown('enchants-section')">
+        ✨ Enchants <span class="dropdown-arrow">&#9654;</span>
+      </div>
+      <div class="dropdown-content">
+        <div class="gallery-grid">
+          <div class="gallery-row">
+            <div class="gallery-col"><h2>Crushed</h2><h1>Mines obsidian faster [Pickaxe]</h1><img src="images/gifs/crushed.gif" alt="Crushed"></div>
+            <div class="gallery-col"><h2>Smelt</h2><h1>Smelts ores, sand and cooks mobs. [Sword, Shovel]</h1><img src="images/gifs/smelt.gif" alt="Smelt"></div>
+            <div class="gallery-col"><h2>Telepathy</h2><h1>Teleports items you mined to your position. [Pickaxe, Shovel]</h1><img src="images/gifs/telepathy.gif" alt="Telepathy"></div>
+            <div class="gallery-col"><h2>Lava Walker</h2><h1>Walk across lava! [Boots]</h1><img src="images/gifs/lava_Walker.gif" alt="Lava Walker"></div>
+            <div class="gallery-col"><h2>Dash</h2><h1>Chunk yourself to another location [Sword]</h1><img src="images/gifs/dash.gif" alt="Dash"></div>
+            <div class="gallery-col"><h2>Scotopia</h2><h1>Gives you night vision. [Helmet]</h1><img src="images/gifs/scotopia.gif" alt="Scotopia"></div>
+            <div class="gallery-col"><h2>Poison</h2><h1>Poison mobs and players for 10 seconds. [Sword]</h1><img src="images/gifs/poison.gif" alt="Poison"></div>
+            <div class="gallery-col"><h2>Disappear</h2><h1>Below 1/2 hp makes you invisible. [Helmet]</h1><img src="images/gifs/disappear.gif" alt="Disappear"></div>
+            <div class="gallery-col"><h2>Life Steal</h2><h1>Converts health from others into your own. [Sword]</h1><img src="images/gifs/life_steal.gif" alt="Life Steal"></div>
+            <div class="gallery-col"><h2>Level</h2><h1>Get more xp from mobs and players. [Sword]</h1><img src="images/gifs/level.gif" alt="Level"></div>
+            <div class="gallery-col"><h2>Timber</h2><h1>Cuts down trees faster. [Axe]</h1><img src="images/gifs/timber.gif" alt="Timber"></div>
+            <div class="gallery-col"><h2>Swift Planting</h2><h1>Auto plant and harvest while holding hoe. [Hoe]</h1><img src="images/gifs/swift_planting.gif" alt="Swift Planting"></div>
+            <div class="gallery-col"><h2>Power Mining</h2><h1>Mine more blocks at once. [Pickaxe]</h1><img src="images/gifs/power_mining.gif" alt="Power Mining"></div>
+            <div class="gallery-col"><h2>Double Jump</h2><h1>Double jump when wearing boots. [Boots]</h1><img src="images/gifs/double_jump.gif" alt="Double Jump"></div>
+            <div class="gallery-col"><h2>Prospector</h2><h1>Chance to find Iron and Gold nuggets when mining [Pickaxe]</h1><img src="images/gifs/prospector.gif" alt="Prospector"></div>
+            <div class="gallery-col"><h2>One Punch</h2><h1>Chance to one punch mobs while nothing is in hand. [N/A]</h1><img src="images/gifs/one_punch.gif" alt="One Punch"></div>
+            <div class="gallery-col"><h2>Ice Aspect</h2><h1>Chance to freeze/slow mobs. [Sword]</h1><img src="images/gifs/ice_aspect.gif" alt="Ice Aspect"></div>
+            <div class="gallery-col"><h2>Drunk</h2><h1>Slowed and slow swinging for a chance to get more damage. [Water Bottle]</h1><img src="images/gifs/drunk.gif" alt="Drunk"></div>
+            <div class="gallery-col"><h2>Spikes</h2><h1>Insta kill mobs/monsters by jumping on them. [Boots]</h1><img src="images/gifs/spikes.gif" alt="Spikes"></div>
+            <div class="gallery-col"><h2>Vein Miner</h2><h1>Mine multiple ores at once. [Pickaxe]</h1><img src="images/gifs/vein_miner.gif" alt="Vein Miner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!-- RESOURCE PACK INFO (CREDITS, DOWNLOAD, ICON) -->
+   <div class="dropdown-section" id="resourcepack-section">
+    <div class="dropdown-header" onclick="toggleDropdown('resourcepack-section')">
+      🎵 Resource Pack <span class="dropdown-arrow">&#9654;</span>
+    </div>
+    <div class="dropdown-content">
+      <div style="text-align:center;">
+        <img src="images/lk_resourcepack-icon.png" alt="Resource Pack Icon" style="max-height:350px;">
+        <div style="margin:1.3rem 0;">
+          <a href="download/resourcepack/Legacy%20Kingdom.zip" class="legacykingdom-discord-btn" style="font-size:1.1rem;">Download Resource Pack</a>
+        </div>
+        <p style="color:white;margin-bottom:1rem;">"The server pack is a mix of many packs and some custom tweaks, Enjoy!" - <span style="color:lightgreen">Terry</span></p>
+        <hr style="max-width: 440px; margin:1.5rem auto;">
+        <div style="color:lightgreen; font-weight:bold; margin-bottom:8px;">Pack Credits</div>
+        <div style="color:white;">
+          <div style="margin: 0 0 10px 0;">For Animated textures to work you will need a mod like <span style="color:gold;">Optifine</span> or <span style="color:gold;">Animatica</span>.</div>
+          <div style="margin-bottom:10px;">Astraliytes Animated Items: <a style="color:gold;" href="https://www.planetminecraft.com/texture-pack/astraliyte-s-animated-textures/">planetminecraft.com/texture-pack/astraliyte-s-animated-textures/</a></div>
+          <div style="margin-bottom:10px;">Etomic Studios Animated Items: <a style="color:gold;" href="https://www.curseforge.com/minecraft/texture-packs/animated-items">curseforge.com/minecraft/texture-packs/animated-items</a></div>
+          <div style="margin-bottom:10px;">Enhanced Paintings: <a style="color:gold;" href="https://www.planetminecraft.com/texture-pack/fuvkans-s-enhanced-paintings/">planetminecraft.com/texture-pack/fuvkans-s-enhanced-paintings/</a></div>
+          <div style="margin-bottom:10px;">Ph1lza's Netherite: <a style="color:gold;" href="https://www.planetminecraft.com/texture-pack/ph1lza-s-netherite/">planetminecraft.com/texture-pack/ph1lza-s-netherite/</a></div>
+          <div style="margin-bottom:10px;">Vanilla Tweaks Credit: <a style="color:gold;" href="https://vanillatweaks.net/">vanillatweaks.net</a></div>
+        </div>
+        <hr style="max-width: 440px; margin:1.5rem auto;">
+        <div style="color:lightgreen; font-weight:bold; margin-bottom:8px;">Recommended (server does not have):</div>
+        <div style="color:white;">Fresh Animations: <a style="color:gold;" href="https://www.curseforge.com/minecraft/texture-packs/fresh-animations">curseforge.com/minecraft/texture-packs/fresh-animations</a></div>
+      </div>
+    </div>
+  </div>
+  </main>
+  <footer>
+    "I can only show you the door, you're the one that has to walk through it" – Morpheus
+    <div style="margin-top:10px;">
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="https://www.youtube.com/channel/UCARfzYBvv_awloDDeVULvAQ" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+    </div>
+  </footer>
+  <script>
+    // Dropdown logic
+    function toggleDropdown(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('open');
+      // Animate arrow direction
+      const arrow = section.querySelector('.dropdown-arrow');
+      if (section.classList.contains('open')) {
+        arrow.innerHTML = '&#9660;'; // down
+        section.querySelector('.dropdown-content').style.display = 'block';
+      } else {
+        arrow.innerHTML = '&#9654;'; // right
+        section.querySelector('.dropdown-content').style.display = 'none';
+      }
+    }
+    // Init dropdowns closed
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.dropdown-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.dropdown-section').forEach(section => {
+        section.classList.remove('open');
+        const arrow = section.querySelector('.dropdown-arrow');
+        if (arrow) arrow.innerHTML = '&#9654;';
+      });
+    });
+
+    // Slideshow logic
+    const slides = [
+      {src: "images/lk_slideshow_custom_mobs.png", alt: "Mobs"},
+      {src: "images/lk_slideshow_custom_structures.png", alt: "Structures"},
+      {src: "images/lk_slideshow_firework_arrow.png", alt: "PvP arena"},
+      {src: "images/lk_slideshow_custom_mobs.png", alt: "Event screenshot"}
+    ];
+    let currentSlide = 0;
+    function showSlide(n) {
+      currentSlide = (n + slides.length) % slides.length;
+      document.getElementById('slide-img').src = slides[currentSlide].src;
+      document.getElementById('slide-img').alt = slides[currentSlide].alt;
+      updateDots();
+    }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function updateDots() {
+      const slideshowDots = document.getElementById('slideshow-dots');
+      slideshowDots.innerHTML = "";
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'legacykingdom-dot' + (i === currentSlide ? ' active' : '');
+        dot.onclick = () => showSlide(i);
+        slideshowDots.appendChild(dot);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlide(0);
+      document.querySelector('.legacykingdom-slide-btn.left').onclick = prevSlide;
+      document.querySelector('.legacykingdom-slide-btn.right').onclick = nextSlide;
+    });
+  </script>
+</body>
+</html>
