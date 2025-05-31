@@ -1,4 +1,4 @@
-/* ======= Theme Variables ======= */
+/* ======= Theme & Variables ======= */
 :root {
   --bg1: #18181b;
   --bg2: #23232d;
@@ -34,9 +34,8 @@ header {
   display: flex; justify-content: center; align-items: center;
 }
 nav {
-  width: 100%;
+  width: 100%; max-width: 100vw;
   display: flex; justify-content: center; align-items: center;
-  max-width: 100vw;
 }
 .nav-buttons { display: flex; gap: 0.5rem; }
 .nav-btn {
@@ -46,11 +45,7 @@ nav {
   cursor: pointer; transition: background 0.15s, color 0.15s;
   text-decoration: none;
 }
-.nav-btn.active, .nav-btn:hover {
-  color: var(--primary); background: var(--nav-hover);
-}
-
-/* Remove underline from all links globally */
+.nav-btn.active, .nav-btn:hover { color: var(--primary); background: var(--nav-hover); }
 a, a:visited, a:active, a:focus, a:hover {
   text-decoration: none !important;
   box-shadow: none !important;
@@ -168,7 +163,7 @@ main {
   font-weight: 500;
 }
 
-/* ======= Gallery (Korvia & General) ======= */
+/* ======= Gallery (General) ======= */
 .gallery-container {
   display: flex;
   flex-direction: row;
@@ -278,6 +273,81 @@ main {
   box-shadow: 0 4px 16px #0007;
 }
 
+/* ======= Korvia Steam-Style Main Media & Gallery Bar ======= */
+.korvia-main-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111214;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px #0007;
+  min-height: 220px;
+  margin: 1.4rem auto 0.5rem auto;
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+}
+.korvia-main-media img,
+.korvia-main-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #19191e;
+  border-radius: var(--radius);
+  display: block;
+  max-height: 400px;
+}
+.korvia-main-media video {
+  background: #101010;
+}
+.korvia-gallery-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 0.65rem;
+  overflow-x: auto;
+  margin: 0.9rem auto 1.9rem auto;
+  padding: 0.5rem 0.1rem;
+  max-width: 700px;
+  justify-content: center;
+  scrollbar-width: thin;
+}
+.korvia-gallery-thumb {
+  min-width: 92px;
+  max-width: 120px;
+  aspect-ratio: 16/9;
+  background: #1c1c20;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0005;
+  transition: border 0.17s, box-shadow 0.15s, transform 0.16s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.korvia-gallery-thumb.active,
+.korvia-gallery-thumb:hover {
+  border: 2px solid var(--primary);
+  box-shadow: 0 8px 32px #29293799;
+  transform: scale(1.04);
+}
+.korvia-gallery-thumb img,
+.korvia-gallery-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  background: #1a1a1c;
+  display: block;
+}
+.korvia-gallery-thumb video {
+  background: #181b19;
+}
+
 /* ======= Patch Notes Section (Korvia) ======= */
 .patch-notes-section {
   background: var(--surface);
@@ -363,27 +433,6 @@ main {
   width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);
   display: block;
 }
-.legacykingdom-slide-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: var(--bg2); color: var(--primary);
-  border: none; border-radius: 50%;
-  width: 2.3rem; height: 2.3rem; font-size: 1.4rem; cursor: pointer;
-  opacity: 0.77; transition: background 0.12s;
-  z-index: 2; box-shadow: var(--shadow);
-  display: flex; align-items: center; justify-content: center;
-}
-.legacykingdom-slide-btn.left { left: 8px; }
-.legacykingdom-slide-btn.right { right: 8px; }
-.legacykingdom-slide-btn:hover { background: var(--nav-hover); opacity: 1; }
-.legacykingdom-slideshow-dots {
-  display: flex; gap: 0.2rem; justify-content: center;
-  margin-bottom: 1.1rem;
-}
-.legacykingdom-dot {
-  width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);
-  border: none; cursor: pointer; transition: background 0.15s; outline: none;
-}
-.legacykingdom-dot.active { background: var(--primary); }
 .legacykingdom-discord-btn-wrap {
   display: flex;
   justify-content: center;
@@ -513,6 +562,12 @@ footer.visible { opacity: 0.93; pointer-events: auto; }
   main { max-width: 99vw; }
   .gallery-item { min-width: 200px; max-width: 95vw; }
 }
+@media (max-width: 700px) {
+  .korvia-main-media,
+  .korvia-gallery-bar { max-width: 99vw; }
+  .korvia-main-media img,
+  .korvia-main-media video { max-height: 39vw; }
+}
 @media (max-width: 600px) {
   main { padding: 1.1rem 0.3rem; }
   .project-card { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
@@ -526,4 +581,7 @@ footer.visible { opacity: 0.93; pointer-events: auto; }
   .lk-server-banner { max-width: 98vw; }
   .recipes-col, .gallery-col { min-width: 99vw; max-width: 99vw; }
 }
-
+@media (max-width: 480px) {
+  .korvia-gallery-thumb { min-width: 65px; max-width: 80px; }
+  .korvia-main-media { min-height: 110px; }
+}

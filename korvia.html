@@ -26,35 +26,12 @@
       <div class="about-section">
         Aliens have invaded, raining killer machines from the sky and destroying all you hold dear. Will you stand and fight—or watch your world burn?
       </div>
-      <div class="gallery-container">
-        <div class="gallery-item" data-type="video" data-src="./videos/korvia1.mp4">
-          <video muted preload="metadata" playsinline>
-            <source src="./videos/korvia1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="gallery-item" data-type="video" data-src="./videos/korvia2.mp4">
-          <video muted preload="metadata" playsinline>
-            <source src="./videos/korvia2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="gallery-item" data-type="img" data-src="./images/korvia1.png">
-          <img src="./images/korvia1.png" alt="Korvia Screenshot 1" loading="lazy">
-        </div>
-        <div class="gallery-item" data-type="img" data-src="./images/korvia2.png">
-          <img src="./images/korvia2.png" alt="Korvia Screenshot 2" loading="lazy">
-        </div>
-      </div>
+      <div class="korvia-main-media" id="mainMediaArea"></div>
+      <div class="korvia-gallery-bar" id="korviaGalleryBar"></div>
       <div class="gallery-download-btn-wrap">
         <a href="./downloads/gamebuilds/korvia.zip" download class="gallery-download-btn">
           <i class="fa fa-download"></i> Download Pre-alpha
         </a>
-      </div>
-      <div class="gallery-modal" id="galleryModal">
-        <button class="close-btn" id="closeGalleryModal">&times;</button>
-        <img style="display:none;" id="galleryModalImg">
-        <video controls style="display:none;max-height:87vh;" id="galleryModalVideo"></video>
       </div>
     </section>
     <section class="patch-notes-section">
