@@ -12,6 +12,25 @@ window.addEventListener('scroll', checkFooter);
 window.addEventListener('resize', checkFooter);
 document.addEventListener('DOMContentLoaded', checkFooter);
 
+// Dropdown logic (for all .dropdown-section elements)
+window.toggleDropdown = function(id) {
+  const section = document.getElementById(id);
+  if (!section) return;
+  section.classList.toggle('open');
+  const arrow = section.querySelector('.dropdown-arrow');
+  if (arrow) {
+    arrow.innerHTML = section.classList.contains('open') ? '&#9660;' : '&#9654;';
+  }
+};
+// Init all dropdowns closed with arrow set right
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.dropdown-section').forEach(section => {
+    section.classList.remove('open');
+    const arrow = section.querySelector('.dropdown-arrow');
+    if (arrow) arrow.innerHTML = '&#9654;';
+  });
+});
+
 // Gallery Modal (for Korvia only)
 function setupGallery() {
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -59,3 +78,38 @@ function setupGallery() {
 if (window.location.pathname.endsWith('korvia.html')) {
   document.addEventListener('DOMContentLoaded', setupGallery);
 }
+
+// Legacy Kingdom Slideshow logic
+if (window.location.pathname.endsWith('legacykingdom.html')) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = [
+      {src: "images/lk_slideshow_custom_mobs.png", alt: "Mobs"},
+      {src: "images/lk_slideshow_custom_structures.png", alt: "Structures"},
+      {src: "images/lk_slideshow_firework_arrow.png", alt: "PvP arena"},
+      {src: "images/lk_slideshow_custom_mobs.png", alt: "Event screenshot"}
+    ];
+    let currentSlide = 0;
+    function showSlide(n) {
+      currentSlide = (n + slides.length) % slides.length;
+      document.getElementById('slide-img').src = slides[currentSlide].src;
+      document.getElementById('slide-img').alt = slides[currentSlide].alt;
+      updateDots();
+    }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function updateDots() {
+      const slideshowDots = document.getElementById('slideshow-dots');
+      slideshowDots.innerHTML = "";
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'legacykingdom-dot' + (i === currentSlide ? ' active' : '');
+        dot.onclick = () => showSlide(i);
+        slideshowDots.appendChild(dot);
+      }
+    }
+    showSlide(0);
+    document.querySelector('.legacykingdom-slide-btn.left').onclick = prevSlide;
+    document.querySelector('.legacykingdom-slide-btn.right').onclick = nextSlide;
+  });
+}
+
